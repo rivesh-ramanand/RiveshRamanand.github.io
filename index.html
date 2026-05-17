@@ -456,6 +456,26 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-photo {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    filter: grayscale(15%);
+  }
+
   @media (max-width: 600px) {
     nav { padding: 0 1rem; }
     .nav-links { gap: 1.25rem; }
@@ -463,6 +483,8 @@
     .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .timeline-item::after { display: none; }
     .timeline-period { text-align: left; }
+    .hero-inner { flex-direction: column-reverse; gap: 2rem; }
+    .hero-photo { width: 140px; height: 140px; }
   }
 </style>
 </head>
