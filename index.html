@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="nl">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,6 @@
     min-height: 100vh;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -54,6 +53,12 @@
     letter-spacing: 0.05em;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
   .nav-links {
     display: flex;
     gap: 2rem;
@@ -72,7 +77,29 @@
   .nav-links a:hover { color: var(--text); }
   .nav-links a.active { color: var(--accent2); }
 
-  /* HERO */
+  .lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .lang-button {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .lang-button.active,
+  .lang-button:hover {
+    border-color: var(--accent2);
+    color: var(--text);
+    background: rgba(96,165,250,0.12);
+  }
+
   .hero {
     min-height: 100vh;
     display: flex;
@@ -82,7 +109,7 @@
     margin: 0 auto;
   }
 
-  .hero-inner { width: 100%; }
+  .hero-inner { width: 100%; display: flex; align-items: center; gap: 4rem; }
 
   .hero-tag {
     display: inline-flex;
@@ -115,7 +142,8 @@
 
   h1 .accent { color: var(--accent2); }
 
-  .hero-desc {
+  .hero-desc,
+  .text-body {
     font-size: 1.1rem;
     color: var(--muted);
     max-width: 560px;
@@ -159,7 +187,6 @@
   }
   .btn-outline:hover { border-color: var(--muted); background: var(--surface); }
 
-  /* SECTIONS */
   section {
     padding: 5rem 2rem;
     max-width: 900px;
@@ -182,21 +209,32 @@
     margin-bottom: 3rem;
   }
 
-  /* ABOUT */
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
   }
 
-  .about-card {
+  .about-card,
+  .skill-group,
+  .project-card,
+  .contact-card,
+  .about-bio {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.5rem;
   }
 
-  .about-card-label {
+  .about-card,
+  .skill-group,
+  .project-card,
+  .contact-card {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .about-card-label,
+  .contact-label,
+  .skill-group-title {
     font-size: 12px;
     color: var(--muted);
     font-family: 'JetBrains Mono', monospace;
@@ -205,7 +243,8 @@
     margin-bottom: 0.5rem;
   }
 
-  .about-card-value {
+  .about-card-value,
+  .contact-value {
     font-size: 15px;
     font-weight: 500;
     color: var(--text);
@@ -213,27 +252,15 @@
 
   .about-bio {
     grid-column: 1 / -1;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
     padding: 1.5rem;
     color: var(--muted);
     font-size: 15px;
-    line-height: 1.75;
   }
 
-  /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1rem;
-  }
-
-  .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
   }
 
   .skill-group-title {
@@ -272,25 +299,10 @@
     font-weight: 500;
   }
 
-  .tag-green {
-    background: #0d2818;
-    color: #4ade80;
-    border-color: rgba(74,222,128,0.2);
-  }
+  .tag-green { background: #0d2818; color: #4ade80; border-color: rgba(74,222,128,0.2); }
+  .tag-purple { background: #1a1032; color: #a78bfa; border-color: rgba(167,139,250,0.2); }
+  .tag-orange { background: #1f1408; color: #fb923c; border-color: rgba(251,146,60,0.2); }
 
-  .tag-purple {
-    background: #1a1032;
-    color: #a78bfa;
-    border-color: rgba(167,139,250,0.2);
-  }
-
-  .tag-orange {
-    background: #1f1408;
-    color: #fb923c;
-    border-color: rgba(251,146,60,0.2);
-  }
-
-  /* EXPERIENCE */
   .timeline { display: flex; flex-direction: column; gap: 0; }
 
   .timeline-item {
@@ -374,17 +386,14 @@
     font-size: 12px;
   }
 
-  /* PROJECTS */
-  .projects-grid {
+  .projects-grid,
+  .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
   }
 
   .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
     padding: 1.5rem;
     transition: border-color 0.2s;
   }
@@ -398,24 +407,9 @@
     color: var(--text);
   }
 
-  .project-desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-  }
+  .project-desc { font-size: 13px; color: var(--muted); margin-bottom: 1rem; line-height: 1.6; }
 
   .contact-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
     padding: 1.25rem 1.5rem;
     display: flex;
     align-items: center;
@@ -441,7 +435,6 @@
   .contact-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
   .contact-value { font-size: 14px; font-weight: 500; }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem;
@@ -451,19 +444,9 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
-  /* SCROLLBAR */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .hero-inner {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    width: 100%;
-  }
-
-  .hero-text { flex: 1; }
 
   .hero-photo {
     width: 220px;
@@ -478,7 +461,8 @@
 
   @media (max-width: 600px) {
     nav { padding: 0 1rem; }
-    .nav-links { gap: 1.25rem; }
+    .nav-right { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .nav-links { gap: 1.25rem; flex-wrap: wrap; }
     .about-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .timeline-item::after { display: none; }
@@ -492,138 +476,136 @@
 
 <nav>
   <span class="nav-logo">rivesh.dev</span>
-  <ul class="nav-links">
-    <li><a href="#over">Over</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#ervaring">Ervaring</a></li>
-    <li><a href="#projecten">Projecten</a></li>
-    <li><a href="#interesses">Interesses</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about" data-key="navAbout">About</a></li>
+      <li><a href="#skills" data-key="navSkills">Skills</a></li>
+      <li><a href="#experience" data-key="navExperience">Experience</a></li>
+      <li><a href="#projects" data-key="navProjects">Projects</a></li>
+      <li><a href="#interests" data-key="navInterests">Interests</a></li>
+      <li><a href="#contact" data-key="navContact">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button type="button" class="lang-button active" data-lang="en">EN</button>
+      <button type="button" class="lang-button" data-lang="nl">NL</button>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-tag">beschikbaar voor werk</div>
+      <div class="hero-tag" data-key="heroTag">available for work</div>
       <h1>Rivesh<br><span class="accent">Ramanand</span></h1>
-      <p class="hero-desc">
-        Software Developer gespecialiseerd in webontwikkeling en backend systemen.
-        Daarnaast actief als content creator — ik bouw zowel software als communities.
+      <p class="hero-desc" data-key="heroDesc">
+        Software Developer specializing in web development and backend systems. I am also active as a content creator — building both software and communities.
       </p>
       <div class="hero-links">
-        <a href="mailto:rivesh.ramanand@gmail.com" class="btn btn-primary">✉ Mail mij</a>
-        <a href="https://github.com/rivesh-ramanand" target="_blank" class="btn btn-outline">⌥ GitHub</a>
+        <a href="mailto:rivesh.ramanand@gmail.com" class="btn btn-primary" data-key="btnMail">✉ Email me</a>
+        <a href="https://github.com/rivesh-ramanand" target="_blank" class="btn btn-outline" data-key="btnGitHub">⌥ GitHub</a>
       </div>
     </div>
     <img src="foto.jpg" alt="Rivesh Ramanand" class="hero-photo">
   </div>
 </div>
 
-<!-- OVER -->
-<section id="over">
-  <p class="section-label">// over mij</p>
-  <h2>Wie ik ben</h2>
+<section id="about">
+  <p class="section-label" data-key="sectionAboutLabel">// about me</p>
+  <h2 data-key="sectionAboutHeading">Who I am</h2>
   <div class="about-grid">
     <div class="about-card">
-      <div class="about-card-label">Locatie</div>
-      <div class="about-card-value">Den Haag, Nederland</div>
+      <div class="about-card-label" data-key="aboutLabelLocation">Location</div>
+      <div class="about-card-value" data-key="aboutValueLocation">The Hague, Netherlands</div>
     </div>
     <div class="about-card">
-      <div class="about-card-label">Geboortedatum</div>
-      <div class="about-card-value">26 februari 2006</div>
+      <div class="about-card-label" data-key="aboutLabelBirthday">Birthday</div>
+      <div class="about-card-value" data-key="aboutValueBirthday">26 February 2006</div>
     </div>
     <div class="about-card">
-      <div class="about-card-label">Opleiding</div>
-      <div class="about-card-value">Software Developer niveau 4 — ROC Mondriaan (2021–2025)</div>
+      <div class="about-card-label" data-key="aboutLabelEducation">Education</div>
+      <div class="about-card-value" data-key="aboutValueEducation">Software Developer level 4 — ROC Mondriaan (2021–2025)</div>
     </div>
     <div class="about-card">
-      <div class="about-card-label">Nationaliteit</div>
-      <div class="about-card-value">Nederlands</div>
+      <div class="about-card-label" data-key="aboutLabelNationality">Nationality</div>
+      <div class="about-card-value" data-key="aboutValueNationality">Dutch</div>
     </div>
-    <div class="about-bio">
-      Software Developer met een stevige basis in webontwikkeling en backend-ontwikkeling via PHP en Symfony.
-      Naast mijn technische achtergrond ben ik actief als streamer — dit heeft me sterke live productievaardigheden,
-      video editing en sociale skills bijgebracht. Ik volg actief de ontwikkelingen rondom AI-tooling en gebruik dit
-      al dagelijks in mijn werkproces. Op mijn best in projecten waar ik van A tot Z meedenk en bouw.
+    <div class="about-bio" data-key="aboutBio">
+      Software Developer with a strong foundation in web development and backend systems using PHP and Symfony. Outside of code, I also work as a streamer — gaining live production skills, video editing experience, and strong communication abilities. I follow AI tooling developments closely and use them daily in my workflow. I thrive on projects where I can contribute across the entire process from idea to delivery.
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
-  <p class="section-label">// vaardigheden</p>
-  <h2>Wat ik kan</h2>
+  <p class="section-label" data-key="sectionSkillsLabel">// skills</p>
+  <h2 data-key="sectionSkillsHeading">What I can do</h2>
   <div class="skills-grid">
     <div class="skill-group">
-      <div class="skill-group-title">Frontend</div>
+      <div class="skill-group-title" data-key="skillFrontend">Frontend</div>
       <div class="tags">
-        <span class="tag">HTML5</span>
-        <span class="tag">CSS</span>
-        <span class="tag">Bootstrap</span>
-        <span class="tag">JavaScript</span>
+        <span class="tag" data-key="tagHTML5">HTML5</span>
+        <span class="tag" data-key="tagCSS">CSS</span>
+        <span class="tag" data-key="tagBootstrap">Bootstrap</span>
+        <span class="tag" data-key="tagJavaScript">JavaScript</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Backend</div>
+      <div class="skill-group-title" data-key="skillBackend">Backend</div>
       <div class="tags">
-        <span class="tag">PHP</span>
-        <span class="tag">Symfony</span>
-        <span class="tag">SQL</span>
+        <span class="tag" data-key="tagPHP">PHP</span>
+        <span class="tag" data-key="tagSymfony">Symfony</span>
+        <span class="tag" data-key="tagSQL">SQL</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">AI & Tools</div>
+      <div class="skill-group-title" data-key="skillAI">AI & Tools</div>
       <div class="tags">
-        <span class="tag tag-purple">Claude</span>
-        <span class="tag tag-purple">Claude Code</span>
-        <span class="tag tag-purple">GitHub Copilot</span>
-        <span class="tag tag-purple">AI-assisted dev</span>
+        <span class="tag tag-purple" data-key="tagClaude">Claude</span>
+        <span class="tag tag-purple" data-key="tagClaudeCode">Claude Code</span>
+        <span class="tag tag-purple" data-key="tagCopilot">GitHub Copilot</span>
+        <span class="tag tag-purple" data-key="tagAIAssisted">AI-assisted dev</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Content & Live</div>
+      <div class="skill-group-title" data-key="skillContent">Content & Live</div>
       <div class="tags">
-        <span class="tag tag-orange">OBS Studio</span>
-        <span class="tag tag-orange">Video editing</span>
-        <span class="tag tag-orange">Live productie</span>
+        <span class="tag tag-orange" data-key="tagOBSStudio">OBS Studio</span>
+        <span class="tag tag-orange" data-key="tagVideoEditing">Video editing</span>
+        <span class="tag tag-orange" data-key="tagLiveProduction">Live production</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Overig</div>
+      <div class="skill-group-title" data-key="skillMisc">Other</div>
       <div class="tags">
-        <span class="tag tag-green">Hardware</span>
-        <span class="tag tag-green">PC-reparatie</span>
-        <span class="tag tag-green">Community mgmt</span>
+        <span class="tag tag-green" data-key="tagHardware">Hardware</span>
+        <span class="tag tag-green" data-key="tagPCRepair">PC repair</span>
+        <span class="tag tag-green" data-key="tagCommunityMgmt">Community mgmt</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Talen</div>
+      <div class="skill-group-title" data-key="skillLanguages">Languages</div>
       <div class="tags">
-        <span class="tag">Nederlands</span>
-        <span class="tag">Engels</span>
+        <span class="tag" data-key="tagDutch">Dutch</span>
+        <span class="tag" data-key="tagEnglish">English</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ERVARING -->
-<section id="ervaring">
-  <p class="section-label">// ervaring</p>
-  <h2>Werkervaring & Opleiding</h2>
+<section id="experience">
+  <p class="section-label" data-key="sectionExperienceLabel">// experience</p>
+  <h2 data-key="sectionExperienceHeading">Work experience & education</h2>
   <div class="timeline">
 
     <div class="timeline-item">
-      <div class="timeline-period">Mei 2024<br>Mei 2025</div>
+      <div class="timeline-period">May 2024<br>May 2025</div>
       <div class="timeline-content">
-        <div class="timeline-role">Stagiair Software Developer</div>
-        <div class="timeline-company">SSC-ICT — Den Haag</div>
+        <div class="timeline-role" data-key="expRole1">Intern Software Developer</div>
+        <div class="timeline-company" data-key="expCompany1">SSC-ICT — The Hague</div>
         <ul class="timeline-bullets">
-          <li>Ontwikkeling en uitbreiding van webapplicaties met PHP en Symfony</li>
-          <li>Beheren en optimaliseren van SQL-databases</li>
-          <li>Samenwerking binnen een professioneel development team</li>
-          <li>Zelfstandig oppakken van taken en snel eigen maken van interne systemen</li>
+          <li data-key="expBullet1a">Built and extended web applications using PHP and Symfony</li>
+          <li data-key="expBullet1b">Managed and optimized SQL databases</li>
+          <li data-key="expBullet1c">Collaborated with a professional development team</li>
+          <li data-key="expBullet1d">Handled tasks independently and learned internal systems quickly</li>
         </ul>
       </div>
     </div>
@@ -631,12 +613,12 @@
     <div class="timeline-item">
       <div class="timeline-period">2022<br>2025</div>
       <div class="timeline-content">
-        <div class="timeline-role">Software Developer niveau 4</div>
-        <div class="timeline-company">ROC Mondriaan — Delft</div>
+        <div class="timeline-role" data-key="expRole2">Software Developer level 4</div>
+        <div class="timeline-company" data-key="expCompany2">ROC Mondriaan — Delft</div>
         <ul class="timeline-bullets">
-          <li>Webontwikkeling: HTML5, CSS, JavaScript, PHP</li>
-          <li>Backend-ontwikkeling met Symfony-framework</li>
-          <li>Database design en SQL</li>
+          <li data-key="expBullet2a">Web development: HTML5, CSS, JavaScript, PHP</li>
+          <li data-key="expBullet2b">Backend development with Symfony framework</li>
+          <li data-key="expBullet2c">Database design and SQL</li>
         </ul>
       </div>
     </div>
@@ -644,10 +626,10 @@
     <div class="timeline-item">
       <div class="timeline-period">2018<br>2022</div>
       <div class="timeline-content">
-        <div class="timeline-role">Middelbare School vmbo-gt</div>
-        <div class="timeline-company">Montaigne Lyceum — Nootdorp</div>
+        <div class="timeline-role" data-key="expRole3">High school vmbo-gt</div>
+        <div class="timeline-company" data-key="expCompany3">Montaigne Lyceum — Nootdorp</div>
         <ul class="timeline-bullets">
-          <li>Diploma behaald</li>
+          <li data-key="expBullet3a">Graduated with diploma</li>
         </ul>
       </div>
     </div>
@@ -655,14 +637,13 @@
   </div>
 </section>
 
-<!-- PROJECTEN -->
-<section id="projecten">
-  <p class="section-label">// projecten</p>
-  <h2>Wat ik gebouwd heb</h2>
+<section id="projects">
+  <p class="section-label" data-key="sectionProjectsLabel">// projects</p>
+  <h2 data-key="sectionProjectsHeading">What I built</h2>
   <div class="projects-grid">
     <div class="project-card">
-      <div class="project-name">Webapplicaties</div>
-      <div class="project-desc">Meerdere full-stack webapplicaties gebouwd met HTML, CSS, JavaScript en PHP — van frontend UI tot database-koppeling.</div>
+      <div class="project-name" data-key="project1Name">Web applications</div>
+      <div class="project-desc" data-key="project1Desc">Built full-stack web applications with HTML, CSS, JavaScript and PHP — from frontend UI to database integration.</div>
       <div class="tags">
         <span class="tag">HTML</span>
         <span class="tag">CSS</span>
@@ -671,8 +652,8 @@
       </div>
     </div>
     <div class="project-card">
-      <div class="project-name">Symfony Backend</div>
-      <div class="project-desc">API- en backend-ontwikkeling met het Symfony-framework, inclusief routing, controllers en database-integratie.</div>
+      <div class="project-name" data-key="project2Name">Symfony backend</div>
+      <div class="project-desc" data-key="project2Desc">API and backend development with Symfony, including routing, controllers, and database integration.</div>
       <div class="tags">
         <span class="tag">PHP</span>
         <span class="tag">Symfony</span>
@@ -680,78 +661,280 @@
       </div>
     </div>
     <div class="project-card">
-      <div class="project-name">Hardware & Reparatie</div>
-      <div class="project-desc">Persoonlijke projecten gericht op computerhardware — van het bouwen van systemen tot diagnose en reparatie.</div>
+      <div class="project-name" data-key="project3Name">Hardware & repair</div>
+      <div class="project-desc" data-key="project3Desc">Personal hardware projects from building systems to diagnostics and repairs.</div>
       <div class="tags">
         <span class="tag tag-green">Hardware</span>
-        <span class="tag tag-green">Troubleshooting</span>
+        <span class="tag tag-green" data-key="project3Tag">Troubleshooting</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INTERESSES -->
-<section id="interesses">
-  <p class="section-label">// interesses</p>
-  <h2>Buiten het werk</h2>
+<section id="interests">
+  <p class="section-label" data-key="sectionInterestsLabel">// interests</p>
+  <h2 data-key="sectionInterestsHeading">Outside work</h2>
   <div class="skills-grid">
     <div class="skill-group">
-      <div class="skill-group-title">Vastgoed</div>
-      <p style="font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 0.5rem;">
-        Actief bezig met het begrijpen van de vastgoedmarkt — van financiering en rendement tot de werking van de Nederlandse huizenmarkt. Vastgoed zie ik als een solide manier om vermogen op te bouwen op de lange termijn.
-      </p>
+      <div class="skill-group-title" data-key="interest1Title">Real estate</div>
+      <p class="text-body" data-key="interest1Text">Actively studying the real estate market — from financing and returns to how the Dutch housing market works. I see real estate as a solid way to build long-term wealth.</p>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Day Trading & Forex</div>
-      <p style="font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 0.5rem;">
-        Geïnteresseerd in de financiële markten, met een focus op Forex trading. Ik verdiep me in technische analyse, prijspatronen en risicomanagement — analytisch denken dat ook terugkomt in mijn werk als developer.
-      </p>
+      <div class="skill-group-title" data-key="interest2Title">Day trading & Forex</div>
+      <p class="text-body" data-key="interest2Text">Interested in financial markets with a focus on Forex trading. I study technical analysis, price patterns and risk management — analytical thinking that also supports my work as a developer.</p>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Content & Streaming</div>
-      <p style="font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 0.5rem;">
-        Actief als streamer — van live productie en video editing tot het opbouwen van een online community. Creativiteit en techniek komen hier samen.
-      </p>
+      <div class="skill-group-title" data-key="interest3Title">Content & streaming</div>
+      <p class="text-body" data-key="interest3Text">Active as a streamer — from live production and video editing to building an online community. Creativity and technology come together here.</p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-  <p class="section-label">// contact</p>
-  <h2>Laten we praten</h2>
+  <p class="section-label" data-key="sectionContactLabel">// contact</p>
+  <h2 data-key="sectionContactHeading">Let’s talk</h2>
   <div class="contact-grid">
     <a href="mailto:rivesh.ramanand@gmail.com" class="contact-card">
       <div class="contact-icon">✉</div>
       <div>
-        <div class="contact-label">E-mail</div>
-        <div class="contact-value">rivesh.ramanand@gmail.com</div>
+        <div class="contact-label" data-key="contactEmailLabel">Email</div>
+        <div class="contact-value" data-key="contactEmailValue">rivesh.ramanand@gmail.com</div>
       </div>
     </a>
     <a href="tel:+31647091616" class="contact-card">
       <div class="contact-icon">☎</div>
       <div>
-        <div class="contact-label">Telefoon</div>
-        <div class="contact-value">+31 6 47091616</div>
+        <div class="contact-label" data-key="contactPhoneLabel">Phone</div>
+        <div class="contact-value" data-key="contactPhoneValue">+31 6 47091616</div>
       </div>
     </a>
     <a href="https://github.com/rivesh-ramanand" target="_blank" class="contact-card">
       <div class="contact-icon">⌥</div>
       <div>
-        <div class="contact-label">GitHub</div>
-        <div class="contact-value">github.com/rivesh-ramanand</div>
+        <div class="contact-label" data-key="contactGitHubLabel">GitHub</div>
+        <div class="contact-value" data-key="contactGitHubValue">github.com/rivesh-ramanand</div>
       </div>
     </a>
   </div>
 </section>
 
 <footer>
-  <span>rivesh.ramanand@gmail.com · Den Haag, Nederland · 2025</span>
+  <span data-key="footerText">rivesh.ramanand@gmail.com · The Hague, Netherlands · 2025</span>
 </footer>
 
 <script>
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
+  const langButtons = document.querySelectorAll('.lang-button');
+  const translatable = document.querySelectorAll('[data-key]');
+  const htmlEl = document.documentElement;
+
+  const translations = {
+    en: {
+      navAbout: 'About',
+      navSkills: 'Skills',
+      navExperience: 'Experience',
+      navProjects: 'Projects',
+      navInterests: 'Interests',
+      navContact: 'Contact',
+      heroTag: 'available for work',
+      heroDesc: 'Software Developer specializing in web development and backend systems. I am also active as a content creator — building both software and communities.',
+      btnMail: '✉ Email me',
+      btnGitHub: '⌥ GitHub',
+      sectionAboutLabel: '// about me',
+      sectionAboutHeading: 'Who I am',
+      aboutLabelLocation: 'Location',
+      aboutValueLocation: 'The Hague, Netherlands',
+      aboutLabelBirthday: 'Birthday',
+      aboutValueBirthday: '26 February 2006',
+      aboutLabelEducation: 'Education',
+      aboutValueEducation: 'Software Developer level 4 — ROC Mondriaan (2021–2025)',
+      aboutLabelNationality: 'Nationality',
+      aboutValueNationality: 'Dutch',
+      aboutBio: 'Software Developer with a strong foundation in web development and backend systems using PHP and Symfony. Outside of code, I also work as a streamer — gaining live production skills, video editing experience, and strong communication abilities. I follow AI tooling developments closely and use them daily in my workflow. I thrive on projects where I can contribute across the entire process from idea to delivery.',
+      sectionSkillsLabel: '// skills',
+      sectionSkillsHeading: 'What I can do',
+      skillFrontend: 'Frontend',
+      tagHTML5: 'HTML5',
+      tagCSS: 'CSS',
+      tagBootstrap: 'Bootstrap',
+      tagJavaScript: 'JavaScript',
+      skillBackend: 'Backend',
+      tagPHP: 'PHP',
+      tagSymfony: 'Symfony',
+      tagSQL: 'SQL',
+      skillAI: 'AI & Tools',
+      tagClaude: 'Claude',
+      tagClaudeCode: 'Claude Code',
+      tagCopilot: 'GitHub Copilot',
+      tagAIAssisted: 'AI-assisted dev',
+      skillContent: 'Content & Live',
+      tagOBSStudio: 'OBS Studio',
+      tagVideoEditing: 'Video editing',
+      tagLiveProduction: 'Live production',
+      skillMisc: 'Other',
+      tagHardware: 'Hardware',
+      tagPCRepair: 'PC repair',
+      tagCommunityMgmt: 'Community mgmt',
+      skillLanguages: 'Languages',
+      tagDutch: 'Dutch',
+      tagEnglish: 'English',
+      sectionExperienceLabel: '// experience',
+      sectionExperienceHeading: 'Work experience & education',
+      expRole1: 'Intern Software Developer',
+      expCompany1: 'SSC-ICT — The Hague',
+      expBullet1a: 'Built and extended web applications using PHP and Symfony',
+      expBullet1b: 'Managed and optimized SQL databases',
+      expBullet1c: 'Collaborated with a professional development team',
+      expBullet1d: 'Handled tasks independently and learned internal systems quickly',
+      expRole2: 'Software Developer level 4',
+      expCompany2: 'ROC Mondriaan — Delft',
+      expBullet2a: 'Web development: HTML5, CSS, JavaScript, PHP',
+      expBullet2b: 'Backend development with Symfony framework',
+      expBullet2c: 'Database design and SQL',
+      expRole3: 'High school vmbo-gt',
+      expCompany3: 'Montaigne Lyceum — Nootdorp',
+      expBullet3a: 'Graduated with diploma',
+      sectionProjectsLabel: '// projects',
+      sectionProjectsHeading: 'What I built',
+      project1Name: 'Web applications',
+      project1Desc: 'Built full-stack web applications with HTML, CSS, JavaScript and PHP — from frontend UI to database integration.',
+      project2Name: 'Symfony backend',
+      project2Desc: 'API and backend development with Symfony, including routing, controllers, and database integration.',
+      project3Name: 'Hardware & repair',
+      project3Desc: 'Personal hardware projects from building systems to diagnostics and repairs.',
+      project3Tag: 'Troubleshooting',
+      sectionInterestsLabel: '// interests',
+      sectionInterestsHeading: 'Outside work',
+      interest1Title: 'Real estate',
+      interest1Text: 'Actively studying the real estate market — from financing and returns to how the Dutch housing market works. I see real estate as a solid way to build long-term wealth.',
+      interest2Title: 'Day trading & Forex',
+      interest2Text: 'Interested in financial markets with a focus on Forex trading. I study technical analysis, price patterns and risk management — analytical thinking that also supports my work as a developer.',
+      interest3Title: 'Content & streaming',
+      interest3Text: 'Active as a streamer — from live production and video editing to building an online community. Creativity and technology come together here.',
+      sectionContactLabel: '// contact',
+      sectionContactHeading: 'Let’s talk',
+      contactEmailLabel: 'Email',
+      contactEmailValue: 'rivesh.ramanand@gmail.com',
+      contactPhoneLabel: 'Phone',
+      contactPhoneValue: '+31 6 47091616',
+      contactGitHubLabel: 'GitHub',
+      contactGitHubValue: 'github.com/rivesh-ramanand',
+      footerText: 'rivesh.ramanand@gmail.com · The Hague, Netherlands · 2025'
+    },
+    nl: {
+      navAbout: 'Over',
+      navSkills: 'Skills',
+      navExperience: 'Ervaring',
+      navProjects: 'Projecten',
+      navInterests: 'Interesses',
+      navContact: 'Contact',
+      heroTag: 'beschikbaar voor werk',
+      heroDesc: 'Software Developer gespecialiseerd in webontwikkeling en backend systemen. Daarnaast actief als content creator — ik bouw zowel software als communities.',
+      btnMail: '✉ Mail mij',
+      btnGitHub: '⌥ GitHub',
+      sectionAboutLabel: '// over mij',
+      sectionAboutHeading: 'Wie ik ben',
+      aboutLabelLocation: 'Locatie',
+      aboutValueLocation: 'Den Haag, Nederland',
+      aboutLabelBirthday: 'Geboortedatum',
+      aboutValueBirthday: '26 februari 2006',
+      aboutLabelEducation: 'Opleiding',
+      aboutValueEducation: 'Software Developer niveau 4 — ROC Mondriaan (2021–2025)',
+      aboutLabelNationality: 'Nationaliteit',
+      aboutValueNationality: 'Nederlands',
+      aboutBio: 'Software Developer met een stevige basis in webontwikkeling en backend-ontwikkeling via PHP en Symfony. Naast mijn technische achtergrond ben ik actief als streamer — dit heeft me sterke live productievaardigheden, video editing en sociale skills bijgebracht. Ik volg actief de ontwikkelingen rondom AI-tooling en gebruik dit al dagelijks in mijn werkproces. Op mijn best in projecten waar ik van A tot Z meedenk en bouw.',
+      sectionSkillsLabel: '// vaardigheden',
+      sectionSkillsHeading: 'Wat ik kan',
+      skillFrontend: 'Frontend',
+      tagHTML5: 'HTML5',
+      tagCSS: 'CSS',
+      tagBootstrap: 'Bootstrap',
+      tagJavaScript: 'JavaScript',
+      skillBackend: 'Backend',
+      tagPHP: 'PHP',
+      tagSymfony: 'Symfony',
+      tagSQL: 'SQL',
+      skillAI: 'AI & Tools',
+      tagClaude: 'Claude',
+      tagClaudeCode: 'Claude Code',
+      tagCopilot: 'GitHub Copilot',
+      tagAIAssisted: 'AI-gestuurde dev',
+      skillContent: 'Content & Live',
+      tagOBSStudio: 'OBS Studio',
+      tagVideoEditing: 'Video editing',
+      tagLiveProduction: 'Live productie',
+      skillMisc: 'Overig',
+      tagHardware: 'Hardware',
+      tagPCRepair: 'PC repair',
+      tagCommunityMgmt: 'Community mgmt',
+      skillLanguages: 'Talen',
+      tagDutch: 'Nederlands',
+      tagEnglish: 'Engels',
+      sectionExperienceLabel: '// ervaring',
+      sectionExperienceHeading: 'Werkervaring & opleiding',
+      expRole1: 'Stagiair Software Developer',
+      expCompany1: 'SSC-ICT — Den Haag',
+      expBullet1a: 'Ontwikkeling en uitbreiding van webapplicaties met PHP en Symfony',
+      expBullet1b: 'Beheren en optimaliseren van SQL-databases',
+      expBullet1c: 'Samenwerking binnen een professioneel development team',
+      expBullet1d: 'Zelfstandig oppakken van taken en snel eigen maken van interne systemen',
+      expRole2: 'Software Developer niveau 4',
+      expCompany2: 'ROC Mondriaan — Delft',
+      expBullet2a: 'Webontwikkeling: HTML5, CSS, JavaScript, PHP',
+      expBullet2b: 'Backend-ontwikkeling met Symfony-framework',
+      expBullet2c: 'Database design en SQL',
+      expRole3: 'Middelbare School vmbo-gt',
+      expCompany3: 'Montaigne Lyceum — Nootdorp',
+      expBullet3a: 'Diploma behaald',
+      sectionProjectsLabel: '// projecten',
+      sectionProjectsHeading: 'Wat ik gebouwd heb',
+      project1Name: 'Webapplicaties',
+      project1Desc: 'Meerdere full-stack webapplicaties gebouwd met HTML, CSS, JavaScript en PHP — van frontend UI tot database-koppeling.',
+      project2Name: 'Symfony Backend',
+      project2Desc: 'API- en backend-ontwikkeling met het Symfony-framework, inclusief routing, controllers en database-integratie.',
+      project3Name: 'Hardware & Reparatie',
+      project3Desc: 'Persoonlijke projecten gericht op computerhardware — van het bouwen van systemen tot diagnose en reparatie.',
+      project3Tag: 'Troubleshooting',
+      sectionInterestsLabel: '// interesses',
+      sectionInterestsHeading: 'Buiten het werk',
+      interest1Title: 'Vastgoed',
+      interest1Text: 'Actief bezig met het begrijpen van de vastgoedmarkt — van financiering en rendement tot de werking van de Nederlandse huizenmarkt. Vastgoed zie ik als een solide manier om vermogen op te bouwen op de lange termijn.',
+      interest2Title: 'Day Trading & Forex',
+      interest2Text: 'Geïnteresseerd in de financiële markten, met een focus op Forex trading. Ik verdiep me in technische analyse, prijspatronen en risicomanagement — analytisch denken dat ook terugkomt in mijn werk als developer.',
+      interest3Title: 'Content & Streaming',
+      interest3Text: 'Actief als streamer — van live productie en video editing tot het opbouwen van een online community. Creativiteit en techniek komen hier samen.',
+      sectionContactLabel: '// contact',
+      sectionContactHeading: 'Laten we praten',
+      contactEmailLabel: 'E-mail',
+      contactEmailValue: 'rivesh.ramanand@gmail.com',
+      contactPhoneLabel: 'Telefoon',
+      contactPhoneValue: '+31 6 47091616',
+      contactGitHubLabel: 'GitHub',
+      contactGitHubValue: 'github.com/rivesh-ramanand',
+      footerText: 'rivesh.ramanand@gmail.com · Den Haag, Nederland · 2025'
+    }
+  };
+
+  function setLanguage(lang) {
+    translatable.forEach(el => {
+      const key = el.dataset.key;
+      if (!key) return;
+      el.textContent = translations[lang][key] || el.textContent;
+    });
+    htmlEl.lang = lang;
+    langButtons.forEach(button => {
+      button.classList.toggle('active', button.dataset.lang === lang);
+    });
+  }
+
+  langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      setLanguage(button.dataset.lang);
+    });
+  });
+
+  setLanguage('en');
 
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
